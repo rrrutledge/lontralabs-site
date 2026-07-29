@@ -7,13 +7,17 @@
   <meta name="description" content="Lontra Labs is a consulting practice helping teams apply AI, modern software engineering, and InnerSource - from strategy through hands-on implementation." />
   <style>
     :root {
-      --ink: #1c2b30;
-      --ink-soft: #46585e;
-      --river: #2f6f76;
-      --river-deep: #234f54;
-      --mist: #f4f1ea;
-      --paper: #fbfaf7;
-      --line: #e4ded2;
+      --ink: #17302f;
+      --ink-soft: #45605f;
+      --river-deep: #1c565c;
+      --river: #2b7a82;
+      --river-light: #4fa3ac;
+      --water: #bfe0e0;
+      --sand: #c8863f;
+      --sand-soft: #e7b878;
+      --mist: #eef4f2;
+      --paper: #fbf8f2;
+      --line: #e2ddcf;
       --max: 760px;
     }
     * { box-sizing: border-box; }
@@ -22,112 +26,156 @@
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--ink);
-      background: var(--paper);
+      background:
+        radial-gradient(1200px 480px at 50% -140px, var(--mist) 0%, rgba(238,244,242,0) 70%),
+        var(--paper);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 
-    /* Header / brand */
-    header { padding: 64px 0 8px; }
-    .brand { display: flex; align-items: center; gap: 14px; }
-    .brand svg { flex: 0 0 auto; }
-    .brand-name {
-      font-size: 1.4rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-    }
+    /* Header */
+    header { padding: 40px 0 0; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 40px; height: 40px; flex: 0 0 auto; }
+    .brand-name { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; }
 
     /* Hero */
-    .hero { padding: 40px 0 8px; }
+    .hero { text-align: center; padding: 30px 0 8px; }
+    .otter-medallion { width: clamp(150px, 40vw, 200px); height: auto; margin: 8px auto 26px; display: block; }
     .hero h1 {
       font-size: clamp(2rem, 6vw, 3rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      font-weight: 600;
-      margin: 0 0 20px;
-      max-width: 18ch;
-      color: var(--ink);
+      line-height: 1.1; letter-spacing: -0.02em; font-weight: 600;
+      margin: 0 0 18px; color: var(--ink);
     }
     .hero p.lede {
-      font-size: 1.18rem;
-      color: var(--ink-soft);
-      margin: 0;
-      max-width: 54ch;
+      font-size: 1.18rem; color: var(--ink-soft);
+      margin: 0 auto; max-width: 52ch;
     }
 
+    /* Ripple divider */
+    .ripple-divider { display: block; width: 100%; max-width: 320px; height: 20px; margin: 40px auto 0; color: var(--river-light); opacity: 0.7; }
+
     /* Sections */
-    section { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 48px; }
-    section:first-of-type { border-top: none; margin-top: 24px; }
+    section { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 44px; }
+    section:first-of-type { border-top: none; margin-top: 20px; }
     h2 {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      color: var(--river);
-      margin: 0 0 18px;
+      font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.09em;
+      font-weight: 700; color: var(--sand); margin: 0 0 18px;
     }
     section p { margin: 0 0 16px; font-size: 1.06rem; color: var(--ink-soft); max-width: 60ch; }
     section p:last-child { margin-bottom: 0; }
 
     ul.services { list-style: none; margin: 0; padding: 0; }
     ul.services li {
-      padding: 14px 0 14px 26px;
-      position: relative;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink);
-      font-size: 1.06rem;
+      padding: 15px 0 15px 30px; position: relative;
+      border-bottom: 1px solid var(--line); font-size: 1.06rem; color: var(--ink);
     }
     ul.services li:last-child { border-bottom: none; }
     ul.services li::before {
-      content: "";
-      position: absolute;
-      left: 2px; top: 22px;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--river);
-      opacity: 0.75;
+      content: ""; position: absolute; left: 3px; top: 23px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--river); box-shadow: 0 0 0 4px rgba(43,122,130,0.14);
     }
-    ul.services li b { color: var(--ink); font-weight: 600; }
+    ul.services li b { font-weight: 600; }
     ul.services li span { color: var(--ink-soft); }
 
     /* Contact */
     .contact a {
-      color: var(--river-deep);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(47,111,118,0.35);
-      font-weight: 600;
+      color: var(--river-deep); text-decoration: none;
+      border-bottom: 2px solid var(--sand-soft); font-weight: 600;
+      padding-bottom: 1px; transition: border-color .15s ease;
     }
-    .contact a:hover { border-bottom-color: var(--river-deep); }
+    .contact a:hover { border-bottom-color: var(--sand); }
 
-    footer {
-      padding: 40px 0 64px;
-      color: #94897a;
-      font-size: 0.85rem;
-    }
-    footer .ripple { color: var(--river); opacity: 0.6; }
+    footer { padding: 38px 0 60px; color: #9a8f7c; font-size: 0.86rem; text-align: center; }
+    footer .otter-foot { width: 22px; height: 22px; vertical-align: -5px; margin-right: 6px; color: var(--river); }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <!-- Understated river-otter mark: a swimming otter above a water line -->
-        <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
           <path d="M8 30c3.5-1.2 6.2-4.4 9.5-6.6 3.6-2.4 7.7-3.6 12-3.2 2.7.25 5.4 1.3 7.3 3.3.9.95 1.6 2.2 1.5 3.5-.1 1.2-1 2.3-2.2 2.5-1.4.25-2.7-.6-3.9-1.3"
-                stroke="#2f6f76" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="38.5" cy="23.2" r="1.3" fill="#234f54"/>
+                stroke="#2b7a82" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="38.5" cy="23.2" r="1.4" fill="#1c565c"/>
           <path d="M6 37c2.6-1.4 4.6-1.4 7.2 0 2.6 1.4 4.6 1.4 7.2 0 2.6-1.4 4.6-1.4 7.2 0 2.6 1.4 4.6 1.4 7.2 0 2.6-1.4 4.6-1.4 7.2 0"
-                stroke="#2f6f76" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+                stroke="#4fa3ac" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
         </svg>
         <span class="brand-name">Lontra Labs</span>
       </div>
     </header>
 
     <div class="hero">
+      <!-- River otter emerging from the water -->
+      <svg class="otter-medallion" viewBox="0 0 200 200" role="img" aria-label="A river otter emerging from the water">
+        <defs>
+          <clipPath id="disc"><circle cx="100" cy="100" r="96"/></clipPath>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#eef4f2"/>
+            <stop offset="1" stop-color="#d7ebe9"/>
+          </linearGradient>
+          <linearGradient id="deepwater" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#4fa3ac"/>
+            <stop offset="1" stop-color="#1c565c"/>
+          </linearGradient>
+        </defs>
+
+        <g clip-path="url(#disc)">
+          <rect x="0" y="0" width="200" height="200" fill="url(#sky)"/>
+          <!-- water -->
+          <rect x="0" y="128" width="200" height="72" fill="url(#deepwater)"/>
+
+          <!-- otter body/shoulders emerging -->
+          <path d="M56 150c0-30 20-52 44-52s44 22 44 52z" fill="#6f5442"/>
+          <!-- head -->
+          <ellipse cx="100" cy="82" rx="41" ry="37" fill="#79604c"/>
+          <!-- ears -->
+          <circle cx="70" cy="55" r="12" fill="#6f5442"/>
+          <circle cx="130" cy="55" r="12" fill="#6f5442"/>
+          <circle cx="70" cy="55" r="5.5" fill="#4f3c2f"/>
+          <circle cx="130" cy="55" r="5.5" fill="#4f3c2f"/>
+          <!-- muzzle / cheeks -->
+          <ellipse cx="100" cy="98" rx="30" ry="24" fill="#cbb49b"/>
+          <ellipse cx="100" cy="104" rx="20" ry="14" fill="#ddccb8"/>
+          <!-- eyes -->
+          <circle cx="82" cy="80" r="6.5" fill="#2c2118"/>
+          <circle cx="118" cy="80" r="6.5" fill="#2c2118"/>
+          <circle cx="84" cy="78" r="2" fill="#fbf8f2"/>
+          <circle cx="120" cy="78" r="2" fill="#fbf8f2"/>
+          <!-- brow tufts -->
+          <path d="M72 68q10-6 20 0" stroke="#5f493a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M108 68q10-6 20 0" stroke="#5f493a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- nose -->
+          <path d="M100 88c-6 0-9 4-9 4 0 4 4 7 9 7s9-3 9-7c0 0-3-4-9-4z" fill="#31241a"/>
+          <path d="M100 99v7" stroke="#7a6450" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- whiskers -->
+          <g stroke="#8a7360" stroke-width="1.3" stroke-linecap="round" opacity="0.85">
+            <path d="M84 96q-16 1-24 -3"/><path d="M84 100q-16 4-23 4"/>
+            <path d="M116 96q16 1 24 -3"/><path d="M116 100q16 4 23 4"/>
+          </g>
+          <!-- little front paws at the waterline -->
+          <ellipse cx="82" cy="140" rx="10" ry="7" fill="#5f493a"/>
+          <ellipse cx="118" cy="140" rx="10" ry="7" fill="#5f493a"/>
+
+          <!-- ripples -->
+          <g fill="none" stroke="#bfe0e0" stroke-width="2.4" stroke-linecap="round" opacity="0.8">
+            <path d="M40 150q18-8 34 0"/>
+            <path d="M126 150q18-8 34 0"/>
+            <path d="M64 166q36-10 72 0"/>
+          </g>
+        </g>
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#1c565c" stroke-width="3" opacity="0.35"/>
+      </svg>
+
       <h1>Software, AI, and InnerSource, applied with judgment.</h1>
       <p class="lede">A consulting practice helping teams apply AI, modern software engineering, and open ways of working - from strategy through hands-on implementation.</p>
+
+      <svg class="ripple-divider" viewBox="0 0 320 20" fill="none" aria-hidden="true">
+        <path d="M4 12c20-10 40-10 60 0s40 10 60 0 40-10 60 0 40 10 60 0 40-10 60 0"
+              stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
     </div>
 
     <section>
@@ -148,11 +196,16 @@
 
     <section class="contact">
       <h2>Get in touch</h2>
-      <p>For consulting inquiries, reach out at <a href="mailto:russell.rutledge@outlook.com">russell.rutledge@outlook.com</a>.</p>
+      <p>For consulting inquiries, reach out at <a href="mailto:hello@lontralabs.io">hello@lontralabs.io</a>.</p>
     </section>
 
     <footer>
-      <span class="ripple">≈</span> &nbsp;Lontra Labs · <em>lontra</em>, the river otter - patient, adaptable, at home in the current.
+      <svg class="otter-foot" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M8 30c3.5-1.2 6.2-4.4 9.5-6.6 3.6-2.4 7.7-3.6 12-3.2 2.7.25 5.4 1.3 7.3 3.3.9.95 1.6 2.2 1.5 3.5-.1 1.2-1 2.3-2.2 2.5-1.4.25-2.7-.6-3.9-1.3"
+              stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="38.5" cy="23.2" r="1.5" fill="currentColor"/>
+      </svg>
+      Lontra Labs · <em>lontra</em>, the river otter - patient, adaptable, at home in the current.
     </footer>
   </div>
 </body>
